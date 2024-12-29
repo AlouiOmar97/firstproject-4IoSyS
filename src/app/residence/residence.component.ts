@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Residence } from '../core/Model/residence';
+import { ResidenceService } from '../services/residence.service';
 
 @Component({
   selector: 'app-residence',
@@ -40,4 +41,20 @@ export class ResidenceComponent {
     {id:4,"name": "El Anber","address":"inconnu",
     "image":"../../assets/images/R4.jpg", status: "En Construction"}
     ];
+
+    constructor(private residenceService: ResidenceService){}
+    ngOnInit(){
+      this.residenceService.getResidence().subscribe((data)=>{
+        this.listResidences = data
+      })
+    }
+
+    deleteResidence(id: any){
+      this.residenceService.deleteResidence(id).subscribe(()=>{
+        console.log("Residence deleted !");
+        this.residenceService.getResidence().subscribe((data)=>{
+          this.listResidences = data
+        })
+      })
+    }
 }

@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Add Appartement</h1>
+    <form [formGroup]="appartForm" >
+        <div class="form-group row">
+          <label for="exampleInputName1" class="col-sm-2 col-form-label">Appartement Number</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="appartNumber" id="exampleInputName1" aria-describedby="nameHelp">
+              <div class="alert alert-danger" *ngIf="appartNumber?.errors?.['required'] && appartNumber?.dirty">Appartement Number is required.</div>
+              <div class="alert alert-danger" *ngIf="appartNumber?.errors?.['min'] && appartNumber?.dirty">Appartement Number must be a positive.</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Floor Number</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="floorNumber" id="exampleInputAddress1">
+              <div class="alert alert-danger" *ngIf="floorNumber?.errors?.['required'] && floorNumber?.touched">Floor Number is required.</div>
+          </div>
+
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Surface</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="surface" id="exampleInputAddress1">
+                <div class="alert alert-danger" *ngIf="surface?.errors?.['required'] && surface?.touched">Address is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Terrace</label>
+            <div class="col-sm-10">
+                <input type="radio" class="form-check-input" id="terraceChoice2" formControlName="terrace" name="terrace" value="yes" />
+                <label class="form-check-label" for="terraceChoice2">Yes</label><br>
+                <input type="radio" class="form-check-input" id="terraceChoice3" formControlName="terrace" name="terrace" value="no" />
+                <label class="form-check-label" for="terraceChoice3">No</label>
+                <div class="alert alert-danger" *ngIf="terrace?.errors?.['required'] && terrace?.touched">Terrace is required.</div>
+            </div>       
+        </div>
+
+        <div class="form-group row" *ngIf="terrace?.value=='yes'">
+            <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Terrace Surface</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="terraceSurface" id="exampleInputAddress1">
+                <div class="alert alert-danger" *ngIf="terraceSurface?.errors?.['required'] && terraceSurface?.touched">Terrace Surface is required.</div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Category</label>
+            <div class="col-sm-10">
+                <input type="radio" class="form-check-input" id="categoryChoice1" formControlName="category" name="category" value="s1" />
+                <label class="form-check-label" for="categoryChoice1">S+1</label><br>
+                <input type="radio" class="form-check-input" id="categoryChoice2" formControlName="category" name="category" value="s2" />
+                <label class="form-check-label" for="categoryChoice2">S+2</label><br>
+                <input type="radio" class="form-check-input" id="categoryChoice3" formControlName="category" name="category" value="s3" />
+                <label class="form-check-label" for="categoryChoice3">S+3</label>
+                <div class="alert alert-danger" *ngIf="category?.errors?.['required'] && category?.touched">Category is required.</div>
+            </div>       
+        </div>
+        <button type="submit" [disabled]="appartForm.invalid" (click)="addAppartement()" class="btn btn-primary">Add</button>
+        <input type="reset" class="btn btn-primary">
+      </form>
+</div>

@@ -1,0 +1,28 @@
+{
+  "residence": [
+    {
+      "id": 1,
+      "name": "Residence 1",
+      "address": "address 1",
+      "image": "../../assets/images/R1.jpeg",
+      "status": "Disponible"
+    },
+    {
+      "id": 2,
+      "name": "Residence 2",
+      "address": "address 2",
+      "image": "../../assets/images/R2.jpg",
+      "status": "Disponible"
+    },
+    {
+      "name": "Residence Fol updated",
+      "address": "hammamet",
+      "id": "016e"
+    },
+    {
+      "name": "test updated",
+      "address": "test updated",
+      "id": "4375"
+    }
+  ]
+}

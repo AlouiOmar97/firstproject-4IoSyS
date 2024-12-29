@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Residence } from '../core/Model/residence';
+import { ResidenceService } from '../services/residence.service';
 
 @Component({
   selector: 'app-residence-details',
   templateUrl: './residence-details.component.html',
-  styleUrls: ['./residence-details.component.css']
+  styleUrls: ['./residence-details.component.css'],
 })
 export class ResidenceDetailsComponent {
 id=0
@@ -24,14 +25,17 @@ listResidences:Residence[]=[
   "image":"../../assets/images/R4.jpg", status: "En Construction"}
   ];
   residence!:Residence
-constructor(private activatedRoute: ActivatedRoute){}
+constructor(private activatedRoute: ActivatedRoute, private residenceService: ResidenceService){}
 ngOnInit(){
   this.id= this.activatedRoute.snapshot.params['id']
   // get residence if it exists
   if(this.id==0){
     this.error="Residence not found"
   }
-  this.residence= this.listResidences[1]
+ // this.residence= this.listResidences[1]
+  this.residenceService.getResidenceById(this.id).subscribe((data)=> {
+    this.residence = data
+  })
   console.log(this.residence);
   
   console.log(this.activatedRoute.snapshot.routeConfig?.path);

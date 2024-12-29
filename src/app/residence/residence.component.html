@@ -16,6 +16,8 @@
             <a class="btn btn-secondary" [routerLink]="['/residence/details/', residence.id]">Details</a>
             <button class="btn btn-primary" (click)="showLocation(i)" >Show Location</button>
             <button class="btn btn-warning" (click)="addFavoris(i)" >Like</button>
+            <a class="btn btn-secondary" [routerLink]="['/residence/update/', residence.id]">Update</a>
+            <button class="btn btn-danger" (click)="deleteResidence(residence.id)" >Delete</button>
         </div>
     </div>
 </div>
